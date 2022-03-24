@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Management\AccessController;
+use App\Http\Controllers\Management\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +23,19 @@ Route::get('/', function () {
 Route::group(["middleware" => ['auth:sanctum', 'verified']], function () {
     Route::view('/dashboard', "dashboard")->name('dashboard');
 
-    /** User & Role - Management */
-    Route::get('/user', [Controller::class, "userManagement"])->name('users');
+    /** User - Management */
+    Route::get('/users', [UsersController::class, "index"])->name('users');
+    Route::get('/users/{id}/edit', [UsersController::class, "show"])->name('users.edit');
 
-    /** End - Point */
-    Route::get('/end-point/setting', [Controller::class, "endPointSetting"])->name('endpoint.settings');
+
+    /** Access - Management */
+    Route::get('/access', [Controller::class, "Access"])->name('access');
+        /** Access - Management Role */
+    // Route::get('/access/role/{id}/show', [AccessController::class, "show"])->name('access.role.show');
+    Route::get('/access/role/{id}/edit', [AccessController::class, "showRole"])->name('access.role.edit');
+
+
+    Route::get('/access/permission/{id}/edit', [AccessController::class, "showPermission"])->name('access.permission.edit');
+    // Route::get('/permission/{id}/edit', [PermissionsController::class, "show"])->name('permission.edit');
+
 });

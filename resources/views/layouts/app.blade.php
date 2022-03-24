@@ -15,6 +15,7 @@
 
 
         <!-- Styles -->
+        {{-- <link rel="stylesheet" href="{{ asset('css/tailwind.css') }}"> --}}
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('stisla/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('stisla/css/style.css') }}">

@@ -22,16 +22,19 @@ class AccountGeneratorSeeder extends Seeder
                 'email' => 'bayu@super-admin.com',
                 'password' =>'superadmin',
                 'role' => 'super-admin',
+                'permission' => ['management users', 'management access'],
             ],[
                 'name' => 'admin bayu',
                 'email' => 'bayu@admin.com',
                 'password' =>'admin1234',
                 'role' => 'admin',
+                'permission' => null,
             ],[
-                'name' => 'admin bayu',
+                'name' => 'seller bayu',
                 'email' => 'bayu@seller.com',
                 'password' =>'seller1234',
                 'role' => 'seller',
+                'permission' => null,
             ],
         ];
 
@@ -43,6 +46,7 @@ class AccountGeneratorSeeder extends Seeder
             ]);
 
             $new_user->assignRole($value['role']);
+            $new_user->givePermissionTo($value['permission']);
         }
     }
 }

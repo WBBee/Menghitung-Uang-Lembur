@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RolePermissionGeneratorSeeder extends Seeder
@@ -14,6 +15,21 @@ class RolePermissionGeneratorSeeder extends Seeder
      */
     public function run()
     {
+
+        // create permissions
+        $seed_permission = [
+            [
+                'name' => 'management users'
+            ],[
+                'name' => 'management access'
+            ]
+        ];
+
+        foreach ($seed_permission as $key => $value) {
+            Permission::create($value);
+        }
+
+
         $seed_role = [
             [
                 'name' => 'super-admin'
